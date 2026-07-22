@@ -1,0 +1,2 @@
+<!doctype html><html lang='pt-br'><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>FORKA</title><link rel='stylesheet' href='style.css'></head><body><main class='hero'><h1>FORKA</h1><p>Ferramentas para quem faz acontecer.</p><div class='buttons'>
+<a href='#' id='ml'>Mercado Livre</a><a href='#' id='sh'>Shopee</a><a href='#' id='tt'>TikTok Shop</a><a href='#' id='wa'>WhatsApp</a></div></main><footer>@forkabr</footer><script src='script.js'></script></body></html>
