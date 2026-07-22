@@ -1,0 +1,480 @@
+/* ================================
+   FORKA - Website Oficial
+   style.css
+================================ */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+   font-family:'Montserrat',sans-serif;
+
+    color:#FFFFFF;
+
+    background:
+    radial-gradient(circle at top,#184f84 0%,#01203C 40%,#01172c 100%);
+
+    overflow-x:hidden;
+
+}
+
+/* ================= HEADER ================= */
+
+header{
+
+  width:100%;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 80px;
+
+    position:fixed;
+
+    top:0;
+
+    z-index:999;
+
+    background:rgba(1,32,60,.75);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,.08);
+
+    transition:.35s;
+
+}
+
+.logo img{
+
+     width:180px;
+
+    transition:.35s;
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+nav a:hover{
+
+    color:#F28C28;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+   min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    padding:150px 30px 80px;
+
+    position:relative;
+
+}
+
+.hero::before{
+
+    content:"";
+
+    width:550px;
+
+    height:550px;
+
+    background:#0F4C81;
+
+    border-radius:50%;
+
+    position:absolute;
+
+    filter:blur(180px);
+
+    opacity:.35;
+
+    z-index:-1;
+
+}
+
+.hero-content{
+
+    max-width:900px;
+
+}
+
+.hero h1{
+
+    font-size:60px;
+
+    font-weight:800;
+
+    margin-bottom:25px;
+
+}
+
+.hero p{
+
+    font-size:22px;
+
+    color:#d7d7d7;
+
+    line-height:1.7;
+
+    margin-bottom:60px;
+
+}
+
+.hero-logo{
+
+    width:320px;
+
+    max-width:90%;
+
+    display:block;
+
+    margin:0 auto 35px auto;
+
+    height:auto;
+
+}
+
+/* ================= BOTÕES ================= */
+
+.buttons{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,280px);
+
+    justify-content:center;
+
+    gap:25px;
+
+}
+
+.btn{
+
+    padding:18px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    font-size:17px;
+
+    transition:.3s;
+
+    box-shadow:
+
+    0 10px 25px rgba(0,0,0,.35);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-6px) scale(1.03);
+
+    box-shadow:
+
+    0 18px 35px rgba(0,0,0,.45);
+
+}
+.btn:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.ml{
+
+    background:#FFE600;
+
+    color:#000;
+
+}
+
+.shopee{
+
+    background:#EE4D2D;
+
+    color:white;
+
+}
+
+.tiktok{
+
+    background:#111111;
+
+    color:white;
+
+}
+
+.whatsapp{
+
+    background:#25D366;
+
+    color:white;
+
+}
+
+/* ================= SEÇÕES ================= */
+
+section{
+
+    padding:90px 10%;
+
+}
+
+section h2{
+
+    text-align:center;
+
+    font-size:40px;
+
+    margin-bottom:45px;
+
+    color:#F28C28;
+
+}
+
+/* ================= SOBRE ================= */
+
+.about p{
+
+    max-width:900px;
+
+    margin:auto;
+
+    text-align:center;
+
+    line-height:1.9;
+
+    color:#d7d7d7;
+
+    font-size:18px;
+
+}
+
+/* ================= CARDS ================= */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+   background:rgba(15,76,129,.45);
+
+    backdrop-filter:blur(12px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:18px;
+
+    padding:35px;
+
+    transition:.35s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card h3{
+
+    color:#F28C28;
+
+    margin-bottom:15px;
+
+}
+
+.card p{
+
+    line-height:1.6;
+
+}
+
+/* ================= MARCAS ================= */
+
+.brand-list{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.brand-list span{
+
+    background:#0F4C81;
+
+    padding:15px 30px;
+
+    border-radius:40px;
+
+    font-weight:600;
+
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+    border-top:1px solid rgba(255,255,255,.08);
+
+}
+
+footer h3{
+
+    color:#F28C28;
+
+    font-size:32px;
+
+    margin-bottom:20px;
+
+}
+
+footer p{
+
+    margin:10px 0;
+
+    color:#d5d5d5;
+
+}
+
+/* ================= RESPONSIVO ================= */
+
+@media(max-width:900px){
+
+header{
+
+padding:20px;
+
+flex-direction:column;
+
+height:auto;
+
+gap:20px;
+
+}
+
+nav{
+
+flex-wrap:wrap;
+
+justify-content:center;
+
+}
+
+.hero h1{
+
+font-size:38px;
+
+}
+
+.hero p{
+
+font-size:18px;
+
+}
+
+.buttons{
+
+grid-template-columns:1fr;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+section{
+
+padding:70px 30px;
+
+}
+
+}
+
+@keyframes flutuar{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-10px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
