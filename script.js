@@ -61,4 +61,58 @@ if (header) {
 
 }
 
+/* ===========================
+   CAIXA DE OPÇOES DO EMAIL
+=========================== */
+
+function abrirEmail(event) {
+    event.preventDefault();
+
+    const modal = document.getElementById("emailModal");
+
+    modal.classList.add("ativo");
+}
+
+
+function fecharEmail() {
+    const modal = document.getElementById("emailModal");
+
+    modal.classList.remove("ativo");
+}
+
+
+function copiarEmail() {
+
+    const email = "forka.adm@gmail.com";
+
+    navigator.clipboard.writeText(email)
+        .then(() => {
+
+            const mensagem = document.getElementById("emailCopiado");
+
+            mensagem.textContent = "E-mail copiado!";
+
+            setTimeout(() => {
+                mensagem.textContent = "";
+            }, 2500);
+
+        })
+        .catch(() => {
+
+            alert("Não foi possível copiar automaticamente. E-mail: " + email);
+
+        });
+}
+
+
+/* Fecha ao clicar fora da caixa */
+
+document.getElementById("emailModal").addEventListener("click", function(event) {
+
+    if (event.target === this) {
+        fecharEmail();
+    }
+
+});
+
 console.log("FORKA Website carregado com sucesso.");

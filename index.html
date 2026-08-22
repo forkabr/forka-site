@@ -7,6 +7,8 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link rel="icon" type="image/png" href="assets/apenas-logo.png">
+
     <title>FORKA | Ferramentas para quem faz acontecer</title>
 
     <meta name="description"
@@ -32,11 +34,11 @@
 
     <header>
 
-    <div class="logo">
+    <a href="#" class="logo">  
 
-        <img src="assets/logo-forka.png" alt="FORKA">
+    <img src="assets/logo-mini-sem-fundo.png" alt="FORKA">
 
-    </div>
+    </a>
 
     <nav>
 
@@ -52,56 +54,35 @@
 
 </header>
 
-    <section class="hero">
+  <section class="hero">
 
-    <div class="hero-content">
-
-      <img src="assets/logo-forka.png" alt="Logo FORKA" class="hero-logo">
+    <div class="hero-text">
 
         <span class="subtitle">
-
-            FERRAMENTAS • AUTOMAÇÃO • SOLUÇÕES
-
+            FERRAMENTAS • EQUIPAMENTOS • SOLUÇÕES
         </span>
 
-        <h1>
-
-            Ferramentas para quem faz acontecer.
-
-        </h1>
+        <h1>Ferramentas para quem faz acontecer.</h1>
 
         <p>
-
             Produtos cuidadosamente selecionados para oferecer
             qualidade, confiança e desempenho em cada projeto.
-
         </p>
 
-      <div class="buttons">
+        <div class="buttons">
 
-    <a
-        class="btn ml"
-        href="https://www.mercadolivre.com.br"
-        target="_blank"
-        rel="noopener noreferrer">
-        Mercado Livre
-    </a>
+            <a class="btn ml" href="#">
+                <img src="assets/logo-marcas/logo-MercadoLivre.png" alt="Mercado Livre">
+            </a>
 
-    <a
-        class="btn shopee"
-        href="https://shopee.com.br"
-        target="_blank"
-        rel="noopener noreferrer">
-        Shopee
-    </a>
+            <a class="btn shopee" href="https://shopee.com.br/forka" target="_blank">
+                <img src="assets/logo-marcas/logo-shopee.png" alt="Shopee" >
+                
+            </a>
 
-    <a
-        class="btn tiktok"
-        href="https://www.tiktok.com"
-        target="_blank"
-        rel="noopener noreferrer">
-        TikTok Shop
-    </a>
+            <a class="btn instagram" href="https://www.instagram.com/forkabr?igsh=MTh2NDNsaHVvbzh2ZQ%3D%3D" target="_blank">
+                <img src="assets/logo-marcas/logo-instagram.png" alt="Instagram">
+            </a>
 
     <a
         class="btn whatsapp"
@@ -111,7 +92,13 @@
         WhatsApp
     </a>
 
-</div>
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img src="assets/logo2.png" alt="FORKA">
 
     </div>
 
@@ -121,17 +108,27 @@
 
         <h2>Sobre a FORKA</h2>
 
-        <p>
 
-            A FORKA nasceu com o propósito de oferecer ferramentas,
+             <div class="about-content">
 
-            acessórios e soluções que unem qualidade, confiança e preço justo.
+                 <div class="about-text">
 
-            Nosso compromisso é fornecer produtos cuidadosamente selecionados
+                <p>
+                      A FORKA nasceu com o propósito de oferecer ferramentas,
+                     acessórios e soluções que unem qualidade, confiança e preço justo.
+                     Nosso compromisso é fornecer produtos cuidadosamente selecionados
+                     para profissionais, empresas e apaixonados por ferramentas.
+                 </p>
 
-            para profissionais, empresas e apaixonados por ferramentas.
+             </div>
 
-        </p>
+        <div class="about-logo">
+
+            <img src="assets/apenas-logo.png" alt="FORKA">
+
+        </div>
+
+    </div>
 
     </section>
 
@@ -201,17 +198,10 @@
 
         <div class="brand-list">
 
-            <span>Tramontina</span>
+            <img src="assets/logo-marcas/logo-ciser.png" alt="logo-ciser">
 
-            <span>Vonder</span>
+            <img src="assets/logo-marcas/logo-sfor.png" alt="logo-sfor">
 
-            <span>Bosch</span>
-
-            <span>Makita</span>
-
-            <span>Worker</span>
-
-            <span>MTX</span>
 
         </div>
 
@@ -224,8 +214,6 @@
         class="footer-logo"
         alt="FORKA">
 
-    <h3>FORKA</h3>
-
     <p>
 
         Ferramentas para quem faz acontecer.
@@ -234,13 +222,35 @@
 
     <div class="footer-social">
 
-        <a href="#">Instagram</a>
+        <a href="https://www.instagram.com/forkabr?igsh=MTh2NDNsaHVvbzh2ZQ%3D%3D" target="_blank">Instagram</a>
 
-        <a href="#">WhatsApp</a>
+        <a href="https://wa.me/5519999351856?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20FORKA%20e%20gostaria%20de%20saber%20mais%20sobre%20os%20produtos" target="_blank">WhatsApp</a>
 
-        <a href="#">E-mail</a>
+        <a href="#" onclick="abrirEmail(event)"> E-mail</a>
 
     </div>
+
+   <div id="emailModal" class="email-modal">
+
+    <div class="email-box">
+        <button class="fechar-modal" onclick="fecharEmail()">×</button>
+
+        <h3>Entre em contato</h3>
+        <p>Escolha uma das opções:</p>
+
+        <p class="email-endereco">forka.adm@gmail.com</p>
+
+        <button class="email-opcao email-opcao--copiar" onclick="copiarEmail()">Copiar e-mail</button>
+
+        <div class="email-linhas">
+            <a class="email-opcao" href="https://mail.google.com/mail/?view=cm&fs=1&to=forka.adm@gmail.com" target="_blank">Abrir Gmail</a>
+            <a class="email-opcao" href="https://outlook.live.com/mail/0/deeplink/compose?to=forka.adm@gmail.com" target="_blank">Abrir Outlook</a>
+        </div>
+
+        <p id="emailCopiado" class="email-copiado"></p>
+    </div>
+
+</div>
 
     <p class="copyright">
 

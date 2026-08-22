@@ -1,32 +1,85 @@
 /* ================================
    FORKA - Website Oficial
-   style.css
 ================================ */
 
+:root {
+  /* Como uma legenda de cores. Se mudar aqui, muda no site todo!
+     Esse bloco funciona como a "paleta oficial" do FORKA: toda cor usada
+     no site (fundo, textos, destaques, botões) vem daqui. */
+
+  /* Fundo (gradiente radial usado no body) */
+  --cor-fundo-1: #184f84;
+  --cor-fundo-2: #01203C;
+  --cor-fundo-3: #01172c;
+
+  /* Textos */
+  --cor-texto: #FFFFFF;
+  --cor-subtexto: #d7d7d7;
+  --cor-texto-footer: #d5d5d5;
+
+  /* Destaque (laranja usado em títulos, hover e cards) */
+  --cor-destaque: #F28C28;
+  --cor-hover: #F28C28;
+
+  /* Header */
+  --cor-header-bg: rgba(1,32,60,.75);
+  --cor-borda: rgba(255,255,255,.08);
+
+  /* Cards */
+  --cor-card-bg: rgba(15,76,129,.45);
+
+  /* Marcas (badges) */
+  --cor-marca-bg: #0F4C81;
+
+  /* Botões das redes/plataformas */
+  --cor-ml-bg: #FFE600;
+  --cor-ml-texto: #000000;
+  --cor-shopee: #EE4D2D;
+  --cor-tiktok: #111111;
+  --cor-whatsapp: #25D366;
+
+  /* Footer Social - Links de contato */ 
+  --cor-social: #215789;
+}
+
+/* RESET GERAL
+   Zera margem e espaçamento padrão do navegador em todos os elementos,
+   para que o site comece "do zero" e o alinhamento fique sob controle
+   total do CSS, sem espaços estranhos herdados do navegador. */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+/* Faz a página rolar suavemente quando o usuário clica em um link do
+   menu que aponta para uma seção (ex: "Sobre", "Produtos"). */
 html{
     scroll-behavior:smooth;
+    scroll-padding-top:110px;
 }
 
+/* CORPO DO SITE
+   Define a fonte padrão, a cor do texto e o fundo com gradiente azul
+   que aparece atrás de todo o conteúdo do site. */
 body{
 
    font-family:'Montserrat',sans-serif;
 
-    color:#FFFFFF;
+    color:var(--cor-texto);
 
     background:
-    radial-gradient(circle at top,#184f84 0%,#01203C 40%,#01172c 100%);
+    radial-gradient(circle at top,var(--cor-fundo-1) 0%,var(--cor-fundo-2) 40%,var(--cor-fundo-3) 100%);
 
     overflow-x:hidden;
 
 }
 
-/* ================= HEADER ================= */
+/* ================= HEADER =================
+   O cabeçalho fixo no topo da página, com a logo e o menu de navegação.
+   Fica sempre visível mesmo quando o usuário rola a página (position:fixed),
+   com um efeito de vidro fosco (blur) por trás para não brigar com o
+   conteúdo que passa atrás dele. */
 
 header{
 
@@ -48,26 +101,39 @@ header{
 
     z-index:999;
 
-    background:rgba(1,32,60,.75);
+    background:var(--cor-header-bg);
 
     backdrop-filter:blur(18px);
 
     -webkit-backdrop-filter:blur(18px);
 
-    border-bottom:1px solid rgba(255,255,255,.08);
+    border-bottom:1px solid var(--cor-borda);
 
     transition:.35s;
 
 }
 
+.logo{
+
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+
+}
+
+/* Tamanho da logo dentro do header. */
 .logo img{
 
-     width:180px;
-
-    transition:.35s;
+    width:120px;
+    height:60px;
+    display:block;
+    transition:.40s;
 
 }
 
+/* Menu de navegação (Início, Sobre, Produtos etc.), com os links
+   organizados lado a lado com espaçamento entre eles. */
 nav{
 
     display:flex;
@@ -76,9 +142,11 @@ nav{
 
 }
 
+/* Estilo de cada link do menu: sem sublinhado, em negrito e na cor
+   padrão do texto. */
 nav a{
 
-    color:white;
+    color:var(--cor-texto);
 
     text-decoration:none;
 
@@ -88,178 +156,223 @@ nav a{
 
 }
 
+/* Ao passar o mouse, o link do menu muda para a cor de destaque
+   (laranja), dando feedback visual de que é clicável. */
 nav a:hover{
 
-    color:#F28C28;
+    color:var(--cor-hover);
 
 }
 
-/* ================= HERO ================= */
+/* ================= HERO =================
+   É a primeira parte visível ao abrir o site: o texto de apresentação
+   (título, subtítulo e botões) de um lado e a imagem de destaque do
+   outro. Ocupa a tela inteira (min-height:100vh) para causar impacto
+   logo de cara. */
 
 .hero{
 
-   min-height:100vh;
+    min-height:100vh;
 
     display:flex;
 
+    justify-content:space-between;
+
+    align-items:stretch;
+
+    gap:60px;
+
+    padding:140px 8% 80px;
+
+}
+
+/* Coluna com o texto de apresentação (subtítulo, título e parágrafo),
+   limitada a 550px de largura para o texto não esticar demais.
+   Como o .hero agora estica as colunas (align-items:stretch) para a
+   imagem poder ocupar a altura toda, aqui centralizamos o texto
+   verticalmente dentro da própria coluna. */
+.hero-text{
+
+    flex:1;
+
+    max-width:550px;
+
+    display:flex;
+
+    flex-direction:column;
+
     justify-content:center;
 
-    align-items:center;
-
-    text-align:center;
-
-    padding:150px 30px 80px;
-
-    position:relative;
-
 }
 
-.hero::before{
+/* Pequeno texto acima do título principal (ex: "BEM-VINDO À FORKA"),
+   com letras espaçadas para dar um ar mais elegante. */
+.subtitle{
 
-    content:"";
+    color:var(--cor-subtexto);
 
-    width:550px;
+    letter-spacing:2px;
 
-    height:550px;
-
-    background:#0F4C81;
-
-    border-radius:50%;
-
-    position:absolute;
-
-    filter:blur(180px);
-
-    opacity:.35;
-
-    z-index:-1;
-
+    font-size:18px;
 }
 
-.hero-content{
-
-    max-width:900px;
-
-}
-
+/* Título principal e maior do site, o primeiro que o visitante lê.
+   Usamos clamp(mínimo, ideal, máximo) em vez de um valor fixo: a fonte
+   agora encolhe SUAVEMENTE conforme a tela diminui, sem precisar
+   esperar chegar num breakpoint pra "pular" de tamanho. Em telas bem
+   largas ela para em 64px; em telas bem estreitas, não passa de 32px. */
 .hero h1{
 
-    font-size:60px;
+  margin-top:20px;
 
-    font-weight:800;
+    font-size:clamp(32px, 6vw, 64px);
+
+    line-height:1.1;
 
     margin-bottom:25px;
-
 }
 
+/* Texto de apoio do título, explicando rapidamente o que é a FORKA
+   ou o que ela oferece. Mesma lógica do h1: escala suave com clamp(). */
 .hero p{
 
-    font-size:22px;
+    color:var(--cor-subtexto);
 
-    color:#d7d7d7;
+    font-size:clamp(16px, 2vw, 22px);
 
-    line-height:1.7;
+    line-height:1.8;
 
-    margin-bottom:60px;
+    margin-bottom:45px;
+}
+
+/* Coluna da imagem de destaque, ao lado do texto de apresentação.
+   As margens negativas "cancelam" o padding do .hero só deste lado,
+   fazendo a imagem encostar na borda direita, no topo (por trás do
+   header fixo) e embaixo da seção — igual ao efeito "sangrado" da
+   referência, onde a foto vai até a borda do navegador. */
+.hero-image{
+
+    flex:1;
+
+    display:flex;
+
+    margin:-180px -10% -100px 0; /* valores mais negativos = imagem maior */
 
 }
 
-.hero-logo{
+/* Tamanho da imagem principal do Hero.
+   Sem cantos arredondados aqui de propósito: como a imagem agora
+   encosta nas bordas do navegador (veja o .hero-image acima), cantos
+   arredondados ficariam estranhos num sangrado até a borda. */
+.hero-image img{
 
-    width:320px;
+    
+    width:100%;
+    
+    height:100%;
 
-    max-width:90%;
+    object-fit:contain;
 
-    display:block;
+    border-radius:0;
 
-    margin:0 auto 35px auto;
-
-    height:auto;
 
 }
 
-/* ================= BOTÕES ================= */
+/* ================= BOTÕES =================
+   Os botões servem para levar o visitante direto às lojas/canais da
+   FORKA (Mercado Livre, Shopee, Instagram e WhatsApp), logo na
+   primeira tela do site. Ficam organizados em uma grade 2x2. */
 
+/* Largura de cada coluna reduzida de 250px para 200px, deixando os
+   botões mais compactos (o gap entre eles continua o mesmo). */
 .buttons{
 
     display:grid;
 
-    grid-template-columns:repeat(2,280px);
+    grid-template-columns:repeat(2,200px);
 
-    justify-content:center;
-
-    gap:25px;
+    gap:16px;
 
 }
 
+/* Estilo base compartilhado por todos os botões: tamanho, cantos
+   arredondados.*/
 .btn{
 
-    padding:18px;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap: 10px;
 
-    border-radius:14px;
+    width: 64px;
+    height: 64px;
 
+    padding: 0;
+    border-radius: 16px; /* estilo "app icon" — ajuste conforme preferir */
+
+    overflow: hidden;
     text-decoration:none;
-
-    font-weight:700;
-
-    font-size:17px;
-
-    transition:.3s;
-
-    box-shadow:
-
-    0 10px 25px rgba(0,0,0,.35);
-
 }
 
+/* Efeito ao passar o mouse: o botão "sobe" levemente e ganha uma
+   sombra, dando sensação de profundidade e de que é clicável. */
 .btn:hover{
 
     transform:translateY(-6px) scale(1.03);
 
-    box-shadow:
-
-    0 18px 35px rgba(0,0,0,.45);
+    box-shadow: 0 18px 35px rgba(0,0,0,.45);
 
 }
-.btn:hover{
-
-    transform:translateY(-5px);
-
+/* A logo preenche o botão inteiro */
+.btn img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
+/* MERCADO LIVRE: logo sem fundo quadrado, então precisa de um
+   fundo (amarelo - cor do ml) e um respiro pra logo não encostar nas bordas */
 .ml{
-
-    background:#FFE600;
-
-    color:#000;
-
+    background: var(--cor-ml-bg);
+    padding: 8px;
+}
+.ml img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
-.shopee{
+/* Botão leva direto para a loja no site da shopee */
+.shopee img{
 
-    background:#EE4D2D;
-
-    color:white;
-
-}
-
-.tiktok{
-
-    background:#111111;
-
-    color:white;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 
 }
-
-.whatsapp{
-
-    background:#25D366;
-
-    color:white;
-
+/* Botão leva direto para o WhatsApp de atendimento/vendas. */
+.whatsapp img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
 }
 
-/* ================= SEÇÕES ================= */
+/* Botão leva para o perfil no instagram */
+.Instagram img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* ================= SEÇÕES =================
+   Regras gerais aplicadas a todas as seções do site (Sobre, Produtos,
+   Marcas etc.), garantindo um espaçamento (padding) padrão entre elas
+   e um estilo único para os títulos de cada seção. */
 
 section{
 
@@ -267,6 +380,8 @@ section{
 
 }
 
+/* Título de cada seção (ex: "Sobre", "Nossos Produtos"), sempre
+   centralizado e na cor de destaque para chamar atenção. */
 section h2{
 
     text-align:center;
@@ -275,29 +390,108 @@ section h2{
 
     margin-bottom:45px;
 
-    color:#F28C28;
+    color:var(--cor-destaque);
 
 }
 
-/* ================= SOBRE ================= */
+/* ================= SOBRE =================
+   Seção que apresenta a FORKA e sua proposta.
+   No desktop, o conteúdo fica dividido entre
+   o texto e a logo da empresa.
+*/
 
-.about p{
+.about {
+    padding: 100px 10% 70px;
+}
 
-    max-width:900px;
 
-    margin:auto;
+/* Título "Sobre a FORKA" */
 
-    text-align:center;
+.about h2 {
+    margin-bottom: 45px;
+}
 
-    line-height:1.9;
 
-    color:#d7d7d7;
+/* linha laranja abaixo do título.
+   Trocamos o "width:500px" fixo por "width:100%" + "max-width:500px":
+   agora a linha nunca fica mais larga que o container (.about-content),
+   então não vaza/estoura em telas pequenas — em telas largas ela para
+   nos mesmos 500px de antes. */
 
-    font-size:18px;
+.about h2::after {
+    content: "";
+
+    display: block;
+
+    width: 100%;
+    max-width: 500px;
+    height: 3px;
+
+    margin: 10px auto 0;
+
+    background: var(--cor-destaque);
+
+    border-radius: 3px;
+}
+
+
+/* posicionamento pra logo ficar atrás do texto*/
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding: 20px 0;
+}
+
+
+/* Área onde fica o texto */
+
+.about-text {
+    position: relative;
+    z-index: 2
+}
+
+
+/* Parágrafo da seção */
+
+.about-text p {
+    text-align: center;
+
+    line-height: 1.8;
+
+    color: var(--cor-subtexto);
+
+    font-size: 18px;
+}
+
+
+/* Área onde fica a logo */
+
+.about-logo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0.07;
+}
+
+
+/* Tamanho e comportamento da logo */
+
+.about-logo img {
+    width: 280px;
+    height: 280px;
+    object-fit: contain;
 
 }
 
-/* ================= CARDS ================= */
+
+/* ================= CARDS =================
+   Os cards servem para apresentar diferenciais, produtos ou serviços
+   da FORKA em blocos separados (ex: "Qualidade", "Entrega Rápida").
+   Se reorganizam automaticamente conforme o tamanho da tela. */
 
 .cards{
 
@@ -309,13 +503,16 @@ section h2{
 
 }
 
+/* Aparência de cada card individual: fundo semitransparente com
+   efeito de vidro fosco, borda sutil e cantos arredondados, para
+   combinar com o visual "premium" do resto do site. */
 .card{
 
-   background:rgba(15,76,129,.45);
+   background:var(--cor-card-bg);
 
     backdrop-filter:blur(12px);
 
-    border:1px solid rgba(255,255,255,.08);
+    border:1px solid var(--cor-borda);
 
     border-radius:18px;
 
@@ -325,27 +522,31 @@ section h2{
 
 }
 
+/* Ao passar o mouse, o card sobe levemente, indicando destaque. */
 .card:hover{
 
     transform:translateY(-8px);
 
 }
 
+/* Título dentro do card (ex: nome do diferencial ou produto). */
 .card h3{
 
-    color:#F28C28;
+    color:var(--cor-destaque);
 
     margin-bottom:15px;
 
 }
 
+/* Texto explicativo dentro do card. */
 .card p{
 
     line-height:1.6;
 
 }
 
-/* ================= MARCAS ================= */
+/* ================= MARCAS =================
+   Lista de "selos" ou marcas/parceiros que a FORKA trabalha */
 
 .brand-list{
 
@@ -353,25 +554,42 @@ section h2{
 
     justify-content:center;
 
+    align-items:center;
+
     flex-wrap:wrap;
 
-    gap:20px;
+    gap:50px;
+}
+
+/* Tamanho dos logos */
+
+.brand-list img{
+
+    width:160px;
+
+    max-width:100%;
+
+    height:70px;
+
+    object-fit:contain;
+
+    display:block;
+
+    transition:.3s;
 
 }
 
-.brand-list span{
+/* Efeito ao passar o mouse */
 
-    background:#0F4C81;
+.brand-list img:hover{
 
-    padding:15px 30px;
-
-    border-radius:40px;
-
-    font-weight:600;
+    transform:scale(1.08);
 
 }
 
-/* ================= FOOTER ================= */
+/* ================= FOOTER =================
+   Rodapé do site: última parte da página, com o nome da
+   marca, dados de contato e informações legais (CNPJ, redes sociais). */
 
 footer{
 
@@ -379,13 +597,14 @@ footer{
 
     padding:60px 20px;
 
-    border-top:1px solid rgba(255,255,255,.08);
+    border-top:1px solid var(--cor-borda);
 
 }
 
+/* Nome/título de destaque dentro do rodapé (ex: "FORKA"). */
 footer h3{
 
-    color:#F28C28;
+    color:var(--cor-destaque);
 
     font-size:32px;
 
@@ -393,70 +612,317 @@ footer h3{
 
 }
 
+/* Linhas de texto do rodapé (contato, endereço, direitos autorais). */
 footer p{
 
     margin:10px 0;
 
-    color:#d5d5d5;
+    color:var(--cor-texto-footer);
 
 }
 
-/* ================= RESPONSIVO ================= */
+/* ================= RESPONSIVO (TELA MÉDIA) =================
+   Faixa intermediária, entre o desktop bem largo e o mobile (que tem
+   sua própria regra logo abaixo). Nessa largura, a coluna da imagem
+   já fica estreita o suficiente pra cortar o texto da logo com
+   object-fit:cover — então trocamos para "contain", que mostra a
+   imagem inteira (sem cortar), aceitando uma pequena sobra de fundo
+   nas laterais, que passa despercebida por ter a mesma cor do site. */
 
-@media(max-width:900px){
+@media (max-width: 1300px){
+
+.hero-image img{
+    object-fit:contain;
+}
+
+}
+
+/* ================= RESPONSIVO =================
+   Ajustes que entram em ação em telas menores (celular/tablet, abaixo
+   de 900px), reorganizando o header, o menu e o Hero para caber bem
+   e ficar legível em telas estreitas. */
+
+@media (max-width: 900px){
 
 header{
+    padding:15px;
+    height:auto;
+    flex-direction:column;
+    align-items:center;
+    gap:15px;
+}
 
-padding:20px;
-
-flex-direction:column;
-
-height:auto;
-
-gap:20px;
-
+.logo img{
+    /* height:auto (em vez de manter os 60px fixos da regra base)
+       deixa a imagem escalar mantendo a proporção original — antes
+       ela ficava "espremida" numa caixa de 150x60. */
+    width:150px;
+    height:auto;
 }
 
 nav{
+    display:flex;
+    width:100%;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
 
-flex-wrap:wrap;
+    nav a{
+        font-size:15px;
+        padding:5px 8px;
+    }
 
-justify-content:center;
+    .hero{
+
+    flex-direction:column-reverse;
+
+    text-align:center;
+
+    gap:40px;
 
 }
 
-.hero h1{
+.hero-text{
 
-font-size:38px;
+    max-width:100%;
+
+}
+
+.hero-image{
+    margin:0;
+}
+
+.hero-image img{
+
+    max-width:420px;
+
+    height:auto;
+
+    object-fit:initial;
+
+    border-radius:20px;
 
 }
 
-.hero p{
-
-font-size:18px;
-
-}
+/* h1 e p não precisam mais de font-size fixo aqui: o clamp() lá em
+   cima já encolhe a fonte sozinho conforme a tela diminui. */
 
 .buttons{
 
-grid-template-columns:1fr;
+    /* Antes: 1 coluna só ("1fr"). Como cada botão tem largura fixa
+       (64px) menor que a coluna inteira, ele ficava "grudado" na
+       esquerda — por isso pareciam empilhados no canto.
+       Agora: mantemos 2 colunas do tamanho exato do botão (64px) e
+       centralizamos a grade inteira com justify-content, formando
+       uma grade 2x2 compacta e centralizada. */
+    grid-template-columns:repeat(2,64px);
+    justify-content:center;
 
 }
-
-.btn{
-
-width:100%;
-
 }
+
+/* ================= RESPONSIVO (CELULAR PEQUENO) =================
+   Breakpoint extra para telas bem estreitas (iPhone SE, celulares mais
+   antigos/compactos, ~480px ou menos). O breakpoint de 900px acima já
+   resolve boa parte do layout (empilha o Hero, quebra o menu), mas em
+   telas muito pequenas o respiro das seções (padding) e o tamanho dos
+   títulos ainda ficam apertados — esses ajustes finos entram aqui. */
+
+@media (max-width: 480px){
 
 section{
+    padding:60px 6%;
+}
 
-padding:70px 30px;
+section h2{
+    font-size:30px;
+}
 
+/* Reforça o limite máximo da linha laranja do "Sobre" pra sobrar
+   mais respiro nas laterais em telas bem estreitas. */
+.about h2::after{
+    width:80%;
+}
+
+header{
+    padding:12px;
+}
+
+nav{
+    gap:8px;
+}
+
+nav a{
+    font-size:14px;
 }
 
 }
 
+/* Logo exibida no rodapé, centralizada e com tamanho reduzido em
+   relação à logo do header. */
+.footer-logo{
+    width:300px;
+    max-width:90%;
+    height:auto;
+    display:block;
+    margin:0 auto 30px;
+}
+
+.footer-social a{
+    color: var(--cor-social);
+    text-decoration: underline;
+    margin: 0 3px;
+}
+
+.footer-social a:visited{
+    color: var(--cor-social);
+}
+
+.footer-social a:hover{
+    color: var(--cor-destaque);
+}
+
+/* ==============================
+   MODAL DE E-MAIL
+   ============================== */
+
+/* Fundo da Caixa */
+.email-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgba(1, 23, 44, 0.70); /*0.70 é a opacidade*/
+    z-index: 9999;
+}
+
+/* Faz aparecer */
+.email-modal.ativo {
+    display: flex;
+}
+
+/* Caixa */
+.email-box {
+    position: relative;
+    width: min(90%, 360px);
+    padding: 28px 25px;
+    background: var(--cor-fundo-3);
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    color: var(--cor-texto);
+}
+
+/* Textos */
+.email-box h3 {
+    margin: 0 0 10px;
+    color: var(--cor-texto);
+    font-size: 20px;
+}
+
+.email-box p {
+    margin: 0 0 15px;
+    color: var(--cor-subtexto);
+    font-size: 14px;
+}
+
+/* Caixa com E-mail */
+.email-endereco {
+    margin: 15px 0;
+    padding: 11px 14px;
+    background: var(--cor-card-bg);
+    border-radius: 7px;
+    color: var(--cor-texto);
+    font-size: 14px;
+    word-break: break-word;
+}
+
+/* Botões */
+.email-opcao {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    margin-top: 9px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 7px;
+    background: var(--cor-social);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+/* Muda a aparência quando o mouse passa por cima de qualquer um desses três */
+.email-opcao:hover {
+    background: var(--cor-destaque);
+    color: var(--cor-texto);
+    transform: translateY(-2px);
+}
+
+/* Botão X */
+.fechar-modal {
+    position: absolute;
+    top: 20px;
+    right: 14px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--cor-subtexto);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+/* Efeito do botão X */
+.fechar-modal:hover {
+    color: var(--cor-destaque);
+    transform: scale(1.1);
+}
+
+/* Texto "E-mail copiado" */
+.email-copiado {
+    margin-top: 10px;
+    color: var(--cor-destaque) !important;
+    font-size: 13px !important;
+}
+
+/*Aplicada só no botão "Copiar e-mail" além de .email-opcao. 
+Ela sobrescreve width e display pra deixar esse botão menor e centralizado,
+em vez de esticado como os outros*/
+.email-opcao--copiar {
+    width: auto;
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 9px auto 0;
+}
+
+/* display: flex faz os filhos ficarem lado a lado (em vez de empilhados)*/
+.email-linhas {
+    display: flex;
+    gap: 8px;
+    margin-top: 9px;
+}
+
+/*Essa é uma regra "aninhada" — só se aplica a elementos com classe .email-opcao que 
+estejam dentro de .email-linhas. Ela sobrescreve o margin-top 
+(que não faz sentido quando estão lado a lado) 
+e usa flex: 1 pra fazer cada link dividir o espaço igualmente entre si */
+.email-linhas .email-opcao {
+    flex: 1;
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Animação de "flutuar": faz um elemento subir e descer suavemente
+   em loop, dando uma sensação de leveza/movimento (útil, por exemplo,
+   em ícones ou imagens de destaque). */
 @keyframes flutuar{
 
 0%{
